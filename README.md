@@ -1,10 +1,20 @@
 # PHP CLI For Plugin Machine
 
-### Install
+## Install
 ```bash
 composer global require imaginary-machines/plugin-machine-php-cli:dev-main
 ```
 
+### Requires
+
+- [Composer 2.0 or later]()
+- [PHP 7.3 or later]()
+
+### Uninstall
+
+```bash
+composer global remove imaginary-machines/plugin-machine-php-cli
+```
 
 ## Development
 
