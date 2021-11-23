@@ -2,13 +2,20 @@
 
 ## Install
 ```bash
-composer global require imaginary-machines/plugin-machine-php-cli:dev-main
+composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
 ```
 
 ### Requires
 
 - [Composer 2.0 or later]()
 - [PHP 7.3 or later]()
+
+## Usage
+
+- Check version
+	- `plugin-machine version`
+- Test that it can write a file
+	- `plugin-machine file:put`
 
 ### Uninstall
 
