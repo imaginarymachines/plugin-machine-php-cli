@@ -28,4 +28,6 @@ composer global remove imaginary-machines/plugin-machine-php-cli
 - Build
 	-`php plugin-machine app:build plugin-machine`
 - Test
-	-`php plugin-machine app:build test`
+	-`php plugin-machine test`
+- Sync Rules
+	-`php plugin-machine sync`
