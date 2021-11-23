@@ -9,7 +9,7 @@ use App\Config;
 class Login extends Command
 {
 
-    protected $signature = 'login';
+    protected $signature = 'login {token}';
 
 
     protected $description = 'Login Command';
@@ -21,8 +21,8 @@ class Login extends Command
      */
     public function handle()
     {
-		dd(Config::get('token'));
-        Config::set('token', 'carl');
+        Helpers::token($this->argument('token'));
+		$this->info('Token set');
     }
 
     /**

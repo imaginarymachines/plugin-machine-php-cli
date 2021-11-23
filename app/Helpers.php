@@ -2,6 +2,20 @@
 namespace App;
 
 class Helpers {
+
+	/**
+	 * Get or set the app token
+	 *
+	 * @param string|null $newValue
+	 * @return void
+	 */
+	public static function token(string $newValue = null) {
+		if( $newValue ) {
+			Config::set('token', $newValue);
+		}
+		$token = Config::get('token');
+		return $token;
+	}
 	 /**
      * Get the home directory for the user.
      *
