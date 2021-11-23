@@ -4,7 +4,8 @@ namespace App\Commands;
 
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
-
+use App\Helpers;
+use App\Config;
 class Login extends Command
 {
 
@@ -20,7 +21,8 @@ class Login extends Command
      */
     public function handle()
     {
-        //
+		dd(Config::get('token'));
+        Config::set('token', 'carl');
     }
 
     /**
