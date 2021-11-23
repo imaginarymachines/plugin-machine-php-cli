@@ -6,6 +6,9 @@ use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+/**
+ * Hi level API for using Plugin Machine
+ */
 class PluginMachine {
 
 	/**
@@ -21,39 +24,70 @@ class PluginMachine {
 		$this->plugin = $plugin;
 	}
 
+    /**
+     * Get the API instance
+     */
 	public function getApi(): PluginMachineApi {
 		return $this->api;
 	}
 
+    /**
+     * Add a feature to plugin
+     *
+     * Saves setting
+     * Downloads and writes each file.
+     */
 	public function addFeature( string $feature, array $data ){
-		try {
-			$r = $this->api->addFeature(
-				$feature,
-				$this->plugin->id(),
-				$this->plugin->buildId(),
-				$data
-			);
-			$files = $r->json( 'files');
-			$id = $r->json( 'id');
+
+        $r = $this->api->addFeature(
+            $feature,
+            $this->plugin,
+            $data
+        );
+
+        $files = $r['files'];
+        $id = $r['id'];
 
 		if( ! $files ){
-			//?
-			return false;
+			throw new \Exception("No files");
+
 		}
-		foreach ($files as $path => $contents) {
-			$writePath = sprintf('%s/$s', $this->plugin->writeDir, $path);
-			Storage::put($writePath, $contents);
+
+		foreach ($files as $path ) {
+            try {
+                $contents = $this->api
+                    ->getFeatureCode(
+                        $id,
+                        $this->plugin,
+                        $path
+                    );
+                Storage::put(
+                    $this->plugin->writePath($path),
+                    $contents
+                );
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
 		}
-		return true;
+		return $files;
 	}
-		}catch( \Exception $e ){
-						return false;
 
-		}
+    /**
+     * Get pluginMachine.json for a plugin
+     *
+     * @param int $pluginId
+     */
+    public function writePluginJson(int $pluginId){
+        $r = $this->api->getPluginJson(
+            $pluginId
+        );
+        if( false != $r && ! empty($r)){
+            Storage::put($this->plugin->writePath('pluginMachine.json'),$r);
+            return true;
+        }
+        return false;
+    }
 
 
-
-	protected function getClientWithToken():PendingRequest{
-		return Http::withToken($this->apiToken);
-	}
 }

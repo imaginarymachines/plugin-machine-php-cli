@@ -6,16 +6,32 @@ class Helpers {
 	/**
 	 * Get or set the app token
 	 *
-	 * @param string|null $newValue
-	 * @return void
+	 * @param string|null $newValue If null. The default, return set value.
+	 * @return string
 	 */
 	public static function token(string $newValue = null) {
 		if( $newValue ) {
 			Config::set('token', $newValue);
 		}
+        if( env('PLUGIN_MACHINE_TOKEN' )){
+            return env('PLUGIN_MACHINE_TOKEN');
+        }
 		$token = Config::get('token');
-		return $token;
+		return (string)$token;
 	}
+
+    /**
+	 * Get or set the app api URL
+	 *
+	 * @param string|null $newValue If null. The default, return set value.
+	 * @return string
+	 */
+    public static function apiUrl(string $newValue = null){
+        if( $newValue ) {
+			Config::set('token', $newValue);
+		}
+        return env('PLUGIN_MACHINE_URL',Config::get('apiUrl','http://localhost') );
+    }
 	 /**
      * Get the home directory for the user.
      *

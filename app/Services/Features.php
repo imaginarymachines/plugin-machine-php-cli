@@ -3,17 +3,23 @@
 namespace App\Services;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Storage;
 
 class Features {
 
 	protected  $features;
 	protected $featuresData;
 	protected $rulesData;
+
+    const PATH_FEATURES = '/data/features.json';
+    const PATH_RULES = '/data/rules.json';
 	public function __construct(){
-		///api/v1/code?rulesOnly=1
-		$this->rulesData = (array) json_decode(file_get_contents(__DIR__.'/data/rules.json'));
-		///api/v1/code?withRules=0
-		$this->featuresData = (array) json_decode(file_get_contents(__DIR__.'/data/features.json'));
+		$this->rulesData = (array) json_decode(
+            Storage::get(self::PATH_RULES)
+        );
+		$this->featuresData = (array) json_decode(
+            Storage::get(self::PATH_FEATURES)
+        );
 		$this->features = collect($this->featuresData)->map(function($feature){
 			return $feature->feature;
 		})->toArray();
