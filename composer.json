@@ -23,6 +23,7 @@
 	],
 	"require": {
 		"php": "^7.3|^8.0",
+		"illuminate/container": "^8.73",
 		"laravel-zero/framework": "^8.8"
 	},
 	"require-dev": {
