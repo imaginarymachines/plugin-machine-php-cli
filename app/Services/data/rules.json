@@ -1,0 +1,486 @@
+{
+	"cpt": {
+		"cptName": {
+			"rules": [
+				"string",
+				"required",
+				"slug"
+			],
+			"label": "Post Type Slug",
+			"options": null
+		},
+		"cptNAME_SINGLULAR": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Singluar Name",
+			"options": null
+		},
+		"cptNAME_MENU": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Menu Name",
+			"options": null
+		},
+		"cptNAME_ADMIN_BAR": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Admin Bar Name",
+			"options": null
+		},
+		"cptADD_NEW": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Add New",
+			"options": null
+		},
+		"cptADD_NEW_ITEM": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Add New Item",
+			"options": null
+		},
+		"cptNEW_ITEM": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: New Item",
+			"options": null
+		},
+		"cptEDIT_ITEM": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Edit Item",
+			"options": null
+		},
+		"cptView_item": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: View Item",
+			"options": null
+		},
+		"cptAll_items": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: All Items",
+			"options": null
+		},
+		"cptSearch_items": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Search Items",
+			"options": null
+		},
+		"cptNot_found": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Item Not Found",
+			"options": null
+		},
+		"cptNOT_FOUND_IN_TRASH": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Not Found In Trash",
+			"options": null
+		},
+		"cptFeatured_image": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Featured Image",
+			"options": null
+		},
+		"cptSet_featured_image": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Set Featured Image",
+			"options": null
+		},
+		"cptRemove_featured_image": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Remove Featured Image",
+			"options": null
+		},
+		"cptUSE_FEATURE_IMAGE": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Use Featured Image",
+			"options": null
+		},
+		"cptARCHIVES": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Archives",
+			"options": null
+		},
+		"cptINSERT_INTO_ITEM": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Insert In To Item",
+			"options": null
+		},
+		"cptUPLOAD_TO_THIS_ITEM": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Upload To Item",
+			"options": null
+		},
+		"cptFILTER_ITEM_LIST": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Filtet Item List",
+			"options": null
+		},
+		"cptITEM_LIST_NAVIGATION": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Items List Navigation",
+			"options": null
+		},
+		"cptITEMS_LIST": {
+			"rules": [
+				"string"
+			],
+			"label": "Label: Items List",
+			"options": null
+		},
+		"cptPUBLIC": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptPUBLIC",
+			"options": null
+		},
+		"cptPUBLIC_QUERYABLE": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptPUBLIC_QUERYABLE",
+			"options": null
+		},
+		"cptShow_ui": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptShow_ui",
+			"options": null
+		},
+		"cptShow_in_menu": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptShow_in_menu",
+			"options": null
+		},
+		"cptQuery_var": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptQuery_var",
+			"options": null
+		},
+		"cptRewrite": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptRewrite",
+			"options": null
+		},
+		"cptCAPABILITY_TYPE": {
+			"rules": [
+				"string"
+			],
+			"label": "cptCptCAPABILITY_TYPE",
+			"options": null
+		},
+		"cptHas_archive": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptHas_archive",
+			"options": null
+		},
+		"cptHIERARCHICAL": {
+			"rules": [
+				"boolean"
+			],
+			"label": "Hierarchical",
+			"options": null
+		},
+		"cptSHOW_IN_REST": {
+			"rules": [
+				"boolean"
+			],
+			"label": "cptCptSHOW_IN_REST",
+			"options": null
+		},
+		"cptMenu_position": {
+			"rules": [
+				"string"
+			],
+			"label": "cptCptMenu_position",
+			"options": null
+		},
+		"cptSUPPORTS": {
+			"rules": [
+				"array",
+				{}
+			],
+			"label": "cptCptSUPPORTS",
+			"options": [
+				"title",
+				"editor",
+				"author",
+				"thumbnail",
+				"excerpt",
+				"trackbacks",
+				"comments",
+				"custom-fields"
+			]
+		}
+	},
+	"ct": [],
+	"adminPage": {
+		"adminPageName": {
+			"rules": [
+				"string",
+				"required",
+				"slug"
+			],
+			"label": "adminPageAdminPageName",
+			"options": null
+		},
+		"adminPageTitle": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "adminPageAdminPageTitle",
+			"options": null
+		},
+		"adminPageType": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "What kind of page",
+			"options": {
+				"React": "REACT",
+				"PHP + jQuery": "PHP"
+			}
+		}
+	},
+	"block": {
+		"blockName": {
+			"rules": [
+				"string",
+				"required",
+				"slug"
+			],
+			"label": "blockBlockName",
+			"options": null
+		},
+		"blockTitle": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "blockBlockTitle",
+			"options": null
+		},
+		"blockCategory": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "blockBlockCategory",
+			"options": {
+				"Text": "text",
+				"Media": "media",
+				"Design": "design",
+				"Embed": "embed",
+				"Widgets": "widgets",
+				"Theme": "theme",
+				"Common": "common"
+			}
+		},
+		"blockRenderCallbackType": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "Render With",
+			"options": {
+				"PHP": "php",
+				"JSX": "jsx"
+			}
+		},
+		"blockBLOCK_DESCRIPTION": {
+			"rules": [
+				"string"
+			],
+			"label": "Block Description",
+			"options": null
+		}
+	},
+	"blockPlugin": {
+		"blockPluginBLOCK_PLUGIN_NAME": {
+			"rules": [
+				"string",
+				"required",
+				"slug"
+			],
+			"label": "blockPluginBlockPluginBLOCK_PLUGIN_NAME",
+			"options": null
+		},
+		"blockPluginBLOCK_PLUGIN_TITLE": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "blockPluginBlockPluginBLOCK_PLUGIN_TITLE",
+			"options": null
+		},
+		"blockPluginType": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "blockPluginBlockPluginType",
+			"options": {
+				"Sidebar": "sidebar"
+			}
+		},
+		"blockPluginBLOCK_PLUGIN_NAME_META_KEY": {
+			"rules": [
+				"string",
+				"required",
+				"slug"
+			],
+			"label": "Meta Key",
+			"options": null
+		},
+		"blockPluginBLOCK_PLUGIN_SETTING_LABEL": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "Setting Label",
+			"options": null
+		}
+	},
+	"hook": {
+		"hookType": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "Action or Filter",
+			"options": {
+				"filter": "Filter",
+				"action": "Action"
+			}
+		}
+	},
+	"meta_field": [],
+	"rest_api_endpoint": [],
+	"gravityview": {
+		"gravityviewHook": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "gravityviewGravityviewHook",
+			"options": {
+				"DataTable JS Options": "gravityview_datatables_js_options",
+				"Edit calendar options": "gravityview\/calendar\/options",
+				"Force exact search match": "gravityview_search_operator",
+				"Limit Entry Revisions option": "gravityview\/entry-revisions\/add-revision",
+				"Custom Delete Entry Message": "gravityview\/delete-entry\/confirm-text",
+				"Increase import timeout": "gravityview\/import\/processor\/args"
+			}
+		}
+	},
+	"woocommerceHook": {
+		"woocommerceHookHook": {
+			"rules": [
+				"string",
+				"required"
+			],
+			"label": "woocommerceHookWoocommerceHookHook",
+			"options": {
+				"Change checkout field labels.": "woocommerce_checkout_fields",
+				"Ovveride coupon valid or not": "coupon_is_valid_for_product"
+			}
+		}
+	},
+	"composer": {
+		"composerPhpNamespace": {
+			"rules": [
+				"required",
+				"string"
+			],
+			"label": "composerComposerPhpNamespace",
+			"options": null
+		},
+		"composerDescription": {
+			"rules": [
+				"required",
+				"string"
+			],
+			"label": "composerComposerDescription",
+			"options": null
+		},
+		"composerAutoload": {
+			"rules": [
+				"boolean"
+			],
+			"label": "PHP Autoloader",
+			"options": null
+		},
+		"composerUnit_tests": {
+			"rules": [
+				"boolean"
+			],
+			"label": "Unit Tests",
+			"options": null
+		},
+		"composerWordpress_tests": {
+			"rules": [
+				"boolean"
+			],
+			"label": "WordPress Integration Tests",
+			"options": null
+		},
+		"composerLint": {
+			"rules": [
+				"boolean"
+			],
+			"label": "Linter",
+			"options": null
+		}
+	},
+	"local_dev": [],
+	"updater": [],
+	"js_test": [],
+	"php_test": []
+}
