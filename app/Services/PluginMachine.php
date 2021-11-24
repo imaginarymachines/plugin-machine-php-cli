@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 /**
- * Hi level API for using Plugin Machine
+ * High level API for using Plugin Machine
  */
 class PluginMachine {
 

@@ -18,7 +18,6 @@ class PluginMachinePlugin {
         int $buildId,
         array $buildIncludes = [],
         string $slug
-
     ) {
 		$this->pluginId = $pluginId;
 		$this->buildId = $buildId;
@@ -26,6 +25,20 @@ class PluginMachinePlugin {
         $this->slug = $slug;
 	}
 
+    /**
+     * Create from array
+     *
+     * @return PluginMachinePlugin
+     */
+    public static function fromArray(array $data) {
+        $plugin = new static(
+            $data['pluginId'],
+            $data['buildId'],
+            $data['buildIncludes'],
+            $data['slug']
+        );
+        return $plugin;
+    }
 
 	public function buildId() {
 		return $this->buildId;
