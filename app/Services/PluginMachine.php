@@ -18,7 +18,7 @@ class PluginMachine {
 	/**
 	 * @var PluginMachinePlugin
 	 */
-	protected $plugin;
+	public $plugin;
 	public function __construct(PluginMachineApi $api, PluginMachinePlugin $plugin){
 		$this->api = $api;
 		$this->plugin = $plugin;

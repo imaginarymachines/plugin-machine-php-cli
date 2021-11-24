@@ -2,10 +2,8 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Support\Arr;
 class PluginMachinePlugin {
 
 	public $writeDir;
@@ -34,8 +32,8 @@ class PluginMachinePlugin {
         $plugin = new static(
             $data['pluginId'],
             $data['buildId'],
-            $data['buildIncludes'],
-            $data['slug']
+            Arr::get($data,'buildIncludes',[]),
+            Arr::get($data,'slug',''),
         );
         return $plugin;
     }

@@ -11,7 +11,7 @@ use LaravelZero\Framework\Commands\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-class Add extends PluginCommand
+class Add extends Command
 {
     /**
      * The signature of the command.
@@ -32,7 +32,7 @@ class Add extends PluginCommand
      *
      * @return mixed
      */
-    public function handle(Features $features)
+    public function handle(Features $features,PluginMachine $pluginMachine)
     {
 
 
@@ -70,7 +70,7 @@ class Add extends PluginCommand
 		}
 
         try {
-            $r = $machine->addFeature($feature->type,$data);
+            $r = $pluginMachine->addFeature($feature->type,$data);
             foreach ($r as $file) {
                 $this->info('Added file: ' . $file);
             }

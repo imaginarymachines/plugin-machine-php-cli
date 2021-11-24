@@ -24,6 +24,18 @@ class AppServiceProvider extends ServiceProvider
 			);
 		});
 
+        //Resolve PluginMachine in container
+        $this->app->bind( PluginMachine::class, function($app, array $parameters){
+            $plugin = isset($parameters['plugin'])
+                ? $parameters['plugin']
+                : PluginMachinePlugin::fromArray(Helpers::pluginConfig());
+            //create YourService passing a parameter got from the calling code
+            return new PluginMachine(
+                $app->make(PluginMachineApi::class),
+                $plugin
+            );
+        } );
+
 
 
     }

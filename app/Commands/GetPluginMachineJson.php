@@ -18,7 +18,11 @@ class GetPluginMachineJson extends Command
         $pluginId = $this->argument('pluginId');
         try {
             $json = $api->getPluginJson($pluginId);
-            Helpers::pluginConfig(json_decode($json,true));
+            $config = Helpers::pluginConfig(json_decode($json,true));
+            $this->table(
+                array_keys($config),
+                [array_values($config)]
+            );
         } catch (\Throwable $th) {
             $this->error($th->getMessage());
         }

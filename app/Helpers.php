@@ -40,7 +40,7 @@ class Helpers {
     public static function pluginConfig(array $newValue = null){
         $file = getcwd() . '/pluginMachine.json';
         if( $newValue ) {
-            return file_put_contents($file, json_encode($newValue));
+            file_put_contents($file, json_encode($newValue));
         }
         if( ! file_exists($file)) {
             return [];

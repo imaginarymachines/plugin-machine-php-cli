@@ -26,6 +26,7 @@
 		"guzzlehttp/guzzle": "^7.4",
 		"illuminate/container": "^8.73",
 		"illuminate/http": "^8.0",
+		"illuminate/log": "^8.0",
 		"laravel-zero/framework": "^8.8"
 	},
 	"require-dev": {
