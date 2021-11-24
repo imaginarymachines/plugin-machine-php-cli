@@ -99,4 +99,18 @@ class Helpers {
         return Config::get($key, $value);
     }
 
+    /**
+     * Get the path to write a file.
+     *
+	 * @param string|null $file If null. The default, returns root. Else, adds /$file to root.
+     * @return string
+     */
+    public static function writePath($file = null){
+        $path =getcwd();
+        if(! $file ){
+            return $path;
+        }
+        return $path . '/' . $file;
+    }
+
 }

@@ -11,3 +11,14 @@ test('Helpers sets pluginConfig', function () {
     ]);
     expect(Helpers::pluginConfig()['pluginId'])->toEqual('3');
 });
+
+test( 'write path', function () {
+    $path = Helpers::writePath();
+    expect(getcwd())->toEqual($path);
+    expect(getcwd().'/'. 'r.php')->toEqual(
+        Helpers::writePath(
+            'r.php',
+        )
+    );
+
+});

@@ -114,11 +114,32 @@
             "label": "Label: Remove Featured Image",
             "options": null
         },
+        "cptFEATURE_IMAGE": {
+            "rules": [
+                "string"
+            ],
+            "label": "Label: Featured Image",
+            "options": null
+        },
         "cptUSE_FEATURE_IMAGE": {
             "rules": [
                 "string"
             ],
             "label": "Label: Use Featured Image",
+            "options": null
+        },
+        "cptSET_FEATURE_IMAGE": {
+            "rules": [
+                "string"
+            ],
+            "label": "Label: Set Featured Image",
+            "options": null
+        },
+        "cptREMOVE_FEATURE_IMAGE": {
+            "rules": [
+                "string"
+            ],
+            "label": "Label: Remove Featured Image",
             "options": null
         },
         "cptARCHIVES": {
@@ -235,7 +256,7 @@
         },
         "cptMenu_position": {
             "rules": [
-                "string"
+                "number"
             ],
             "label": "cptCptMenu_position",
             "options": null

@@ -2,10 +2,11 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Http;
+
+
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
+use App\Helpers;
 /**
  * High level API for using Plugin Machine
  */
@@ -19,9 +20,17 @@ class PluginMachine {
 	 * @var PluginMachinePlugin
 	 */
 	public $plugin;
-	public function __construct(PluginMachineApi $api, PluginMachinePlugin $plugin){
+
+    /**
+     * Path to write files to.
+     *
+     * @var string
+     */
+    public $writePath;
+	public function __construct(PluginMachineApi $api, PluginMachinePlugin $plugin,string $writePath){
 		$this->api = $api;
 		$this->plugin = $plugin;
+        $this->writePath = $writePath;
 	}
 
     /**
@@ -48,9 +57,9 @@ class PluginMachine {
         $files = $r['files'];
         $id = $r['id'];
 
+
 		if( ! $files ){
 			throw new \Exception("No files");
-
 		}
 
 		foreach ($files as $path ) {
@@ -61,8 +70,9 @@ class PluginMachine {
                         $this->plugin,
                         $path
                     );
+
                 Storage::put(
-                    $this->plugin->writePath($path),
+                    $this->writePath($path),
                     $contents
                 );
             } catch (\Throwable $th) {
@@ -70,6 +80,11 @@ class PluginMachine {
             }
 
 		}
+        //If we have pluginMachine.json in response, update it.
+        $pluginMachineJson = Arr::get('pluginMachineJson', $r,null);
+        if( ! empty($pluginMachineJson) && ! empty(json_decode($pluginMachineJson,true)) ){
+            Helpers::pluginConfig(json_decode($pluginMachineJson,true));
+        }
 		return $files;
 	}
 
@@ -83,10 +98,17 @@ class PluginMachine {
             $pluginId
         );
         if( false != $r && ! empty($r)){
-            Storage::put($this->plugin->writePath('pluginMachine.json'),$r);
+            Storage::put($this->writePath('pluginMachine.json'),$r);
             return true;
         }
         return false;
+    }
+
+    /**
+     * Get full path to write to.
+     */
+    public function writePath(string $path){
+        return $this->writePath . '/' . $path;
     }
 
 

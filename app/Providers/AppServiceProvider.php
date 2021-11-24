@@ -32,7 +32,8 @@ class AppServiceProvider extends ServiceProvider
             //create YourService passing a parameter got from the calling code
             return new PluginMachine(
                 $app->make(PluginMachineApi::class),
-                $plugin
+                $plugin,
+                Helpers::writePath()
             );
         } );
 

@@ -35,15 +35,16 @@ class Add extends Command
     public function handle(Features $features,PluginMachine $pluginMachine)
     {
 
-
+        //Choose feature type
         $featureLabel = $this->choice(
 			'What do you want to add to this plugin?',
 			$features->getFeatureOptions('flat.label'),
 			3
 		);
-		//$featureLabel = "Admin Menu Page";
+        //get feature and its rules from
 		$feature = $features->getFeatureBy($featureLabel,'singular');
 		$rules = $features->getRules($feature->type);
+        //Collect data by asking for each value
 		$data = [];
 		foreach ($rules as $key => $field) {
 			$label = isset($field->label)&&! empty($field->label) ? $field->label : $key;
@@ -70,6 +71,7 @@ class Add extends Command
 		}
 
         try {
+            //Ask machine to add feature, get back array of files added
             $r = $pluginMachine->addFeature($feature->type,$data);
             foreach ($r as $file) {
                 $this->info('Added file: ' . $file);
