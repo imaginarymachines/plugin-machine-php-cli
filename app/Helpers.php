@@ -1,6 +1,6 @@
 <?php
 namespace App;
-
+use Storage;
 class Helpers {
 
 	/**
@@ -31,6 +31,21 @@ class Helpers {
 			Config::set('token', $newValue);
 		}
         return env('PLUGIN_MACHINE_URL',Config::get('apiUrl','http://localhost') );
+    }
+    /**
+     * Get or set the pluginMachine.json
+     *
+     * @param array|null $newValue If null. The default, return set value.
+	 * @return array
+    */
+    public static function pluginConfig(array $newValue = null){
+        if( $newValue ) {
+            return Storage::put( 'pluginMachine.json', $newValue);
+        }
+        if( ! Storage::exists('pluginMachine.json')){
+            return [];
+        }
+        return json_decode(Storage::get('pluginMachine.json'),true);
     }
 	 /**
      * Get the home directory for the user.
