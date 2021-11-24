@@ -29,7 +29,7 @@ class Helpers {
         if( $newValue ) {
 			Config::set('token', $newValue);
 		}
-        return env('PLUGIN_MACHINE_URL',Config::get('apiUrl','http://localhost') );
+        return env('PLUGIN_MACHINE_URL',Config::get('apiUrl','http://pluginmachine.app') );
     }
     /**
      * Get or set the pluginMachine.json
