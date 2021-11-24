@@ -1,6 +1,5 @@
 <?php
 namespace App;
-use Storage;
 class Helpers {
 
 	/**
@@ -39,13 +38,14 @@ class Helpers {
 	 * @return array
     */
     public static function pluginConfig(array $newValue = null){
+        $file = getcwd() . '/pluginMachine.json';
         if( $newValue ) {
-            return Storage::put( 'pluginMachine.json', $newValue);
+            return file_put_contents($file, json_encode($newValue));
         }
-        if( ! Storage::exists('pluginMachine.json')){
+        if( ! file_exists($file)) {
             return [];
         }
-        return json_decode(Storage::get('pluginMachine.json'),true);
+        return json_decode(file_get_contents($file),true);
     }
 	 /**
      * Get the home directory for the user.

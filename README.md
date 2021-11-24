@@ -16,6 +16,10 @@ composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
 	- `plugin-machine version`
 - Test that it can write a file
 	- `plugin-machine file:put`
+- Write pluginMachine.json for a plugin
+    - `php plugin-machine plugin:config {pluginId}`
+- Add a feature to current plugin
+    - `php plugin-machine add`
 
 ### Uninstall
 

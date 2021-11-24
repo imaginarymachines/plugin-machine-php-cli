@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
 				Helpers::apiUrl(),
 				Helpers::token()
 			);
-
 		});
 
     }

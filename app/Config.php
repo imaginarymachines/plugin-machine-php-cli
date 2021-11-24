@@ -62,6 +62,6 @@ class Config
      */
     protected static function path()
     {
-        return Helpers::home().'/.laravel-vapor/config.json';
+        return Helpers::home().'/.plugin-machine-php-cli/config.json';
     }
 }

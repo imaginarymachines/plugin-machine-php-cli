@@ -16,14 +16,12 @@ class PluginMachinePlugin {
 	public function __construct(
         int $pluginId,
         int $buildId,
-        string $writeDir,
         array $buildIncludes = [],
         string $slug
 
     ) {
 		$this->pluginId = $pluginId;
 		$this->buildId = $buildId;
-		$this->writeDir = $writeDir;
         $this->buildIncludes = $buildIncludes;
         $this->slug = $slug;
 	}
@@ -37,7 +35,5 @@ class PluginMachinePlugin {
 		return $this->pluginId;
 	}
 
-    public function writePath($path):string{
-        return sprintf('%s/%s', $this->writeDir, $path);
-    }
+
 }
