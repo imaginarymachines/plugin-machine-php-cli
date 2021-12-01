@@ -13,3 +13,15 @@ test('Get config', function () {
          expect(Helpers::pluginConfig()['pluginId'])->toEqual('2');
 
 });
+
+test('Get config based on pluginMachine.json', function () {
+    Helpers::pluginConfig(['pluginId' => '22','buildId' => '120']);
+    Http::fake([
+        '*' => Http::response(['pluginId' => '22','buildId' => '122'], 200, []),
+    ]);
+    Helpers::token(env('TEST_PLUGIN_MACHINE_TOKEN'));
+    $this->artisan(GetPluginMachineJson::class)
+         ->assertExitCode(0);
+         expect(Helpers::pluginConfig()['buildId'])->toEqual('122');
+
+});
