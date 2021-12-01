@@ -7,16 +7,49 @@ on:
     branches: [ main ]
 
 jobs:
-  # Test once with PHP 8
-  test:
+  # first lint
+  lint:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
         operating-system: ['ubuntu-latest',]
-        php-versions: [8.0']
+        php-versions: ['8.0']
     steps:
     - uses: actions/checkout@v2
-    
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: php plugin-machine test
+  # Then test once with PHP 8
+  test:
+    needs: lint
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest',]
+        php-versions: ['8.0']
+    steps:
+    - uses: actions/checkout@v2
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
@@ -49,7 +82,7 @@ jobs:
         php-versions: ['7.3', '7.4', '8.0']
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
