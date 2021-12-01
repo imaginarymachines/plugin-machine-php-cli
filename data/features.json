@@ -8,7 +8,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/cpt"
+            "url": "https://pluginmachine.app/api/v1/code/cpt"
         }
     },
     "adminPage": {
@@ -20,7 +20,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/adminPage"
+            "url": "https://pluginmachine.app/api/v1/code/adminPage"
         }
     },
     "block": {
@@ -32,7 +32,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/block"
+            "url": "https://pluginmachine.app/api/v1/code/block"
         }
     },
     "blockPlugin": {
@@ -44,7 +44,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/blockPlugin"
+            "url": "https://pluginmachine.app/api/v1/code/blockPlugin"
         }
     },
     "hook": {
@@ -56,7 +56,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/hook"
+            "url": "https://pluginmachine.app/api/v1/code/hook"
         }
     },
     "meta_field": {
@@ -68,7 +68,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/meta_field"
+            "url": "https://pluginmachine.app/api/v1/code/meta_field"
         }
     },
     "gravityview": {
@@ -80,7 +80,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/gravityview"
+            "url": "https://pluginmachine.app/api/v1/code/gravityview"
         }
     },
     "woocommerceHook": {
@@ -92,7 +92,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/woocommerceHook"
+            "url": "https://pluginmachine.app/api/v1/code/woocommerceHook"
         }
     },
     "generic_core_filter": {
@@ -104,7 +104,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/generic_core_filter"
+            "url": "https://pluginmachine.app/api/v1/code/generic_core_filter"
         }
     },
     "generic_core_action": {
@@ -116,7 +116,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/generic_core_action"
+            "url": "https://pluginmachine.app/api/v1/code/generic_core_action"
         }
     },
     "composer": {
@@ -128,7 +128,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/composer"
+            "url": "https://pluginmachine.app/api/v1/code/composer"
         }
     },
     "local_dev": {
@@ -140,7 +140,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/local_dev"
+            "url": "https://pluginmachine.app/api/v1/code/local_dev"
         }
     },
     "updater": {
@@ -152,7 +152,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/updater"
+            "url": "https://pluginmachine.app/api/v1/code/updater"
         }
     },
     "php_test": {
@@ -164,7 +164,7 @@
         },
         "route": {
             "method": "POST",
-            "url": "http://localhost/api/v1/code/php_test"
+            "url": "https://pluginmachine.app/api/v1/code/php_test"
         }
     }
 }

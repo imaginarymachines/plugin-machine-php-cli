@@ -324,7 +324,7 @@
                 "string",
                 "required"
             ],
-            "label": "blockBlockTitle",
+            "label": "Block Title",
             "options": null
         },
         "blockCategory": {
@@ -332,7 +332,7 @@
                 "string",
                 "required"
             ],
-            "label": "blockBlockCategory",
+            "label": "Block Category",
             "options": {
                 "Text": "text",
                 "Media": "media",
@@ -369,7 +369,7 @@
                 "required",
                 "slug"
             ],
-            "label": "blockPluginBlockPluginBLOCK_PLUGIN_NAME",
+            "label": "Block Plugin Slug",
             "options": null
         },
         "blockPluginBLOCK_PLUGIN_TITLE": {
@@ -377,7 +377,7 @@
                 "string",
                 "required"
             ],
-            "label": "blockPluginBlockPluginBLOCK_PLUGIN_TITLE",
+            "label": "Block Plugin Title",
             "options": null
         },
         "blockPluginType": {
@@ -385,7 +385,7 @@
                 "string",
                 "required"
             ],
-            "label": "blockPluginBlockPluginType",
+            "label": "Block Plugin Panel Location",
             "options": {
                 "Sidebar": "sidebar"
             }
@@ -472,7 +472,7 @@
                 "string",
                 "required"
             ],
-            "label": "gravityviewGravityviewHook",
+            "label": "Hook",
             "options": {
                 "DataTable JS Options": "gravityview_datatables_js_options",
                 "Edit calendar options": "gravityview/calendar/options",
@@ -489,7 +489,7 @@
                 "string",
                 "required"
             ],
-            "label": "woocommerceHookWoocommerceHookHook",
+            "label": "Hook",
             "options": {
                 "Change checkout field labels.": "woocommerce_checkout_fields",
                 "Ovveride coupon valid or not": "coupon_is_valid_for_product"
@@ -554,7 +554,7 @@
                 "required",
                 "string"
             ],
-            "label": "composerComposerPhpNamespace",
+            "label": "PHP Namespace",
             "options": null
         },
         "composerDescription": {
@@ -562,7 +562,7 @@
                 "required",
                 "string"
             ],
-            "label": "composerComposerDescription",
+            "label": "Description of plugin",
             "options": null
         },
         "composerAutoload": {
