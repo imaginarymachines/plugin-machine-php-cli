@@ -40,3 +40,6 @@ composer global remove imaginary-machines/plugin-machine-php-cli
 	-`php plugin-machine test`
 - Sync Rules
 	-`php plugin-machine sync`
+- Lint code
+    - `composer lint`
+    - `composer fix`

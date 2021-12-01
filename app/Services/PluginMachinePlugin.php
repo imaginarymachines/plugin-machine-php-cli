@@ -2,49 +2,51 @@
 
 namespace App\Services;
 
-
 use Illuminate\Support\Arr;
-class PluginMachinePlugin {
+
+class PluginMachinePlugin
+{
 
 	public $writeDir;
 	public $pluginId;
 	public $buildId;
-    public array $buildIncludes;
-    public string $slug;
+	public array $buildIncludes;
+	public string $slug;
 	public function __construct(
-        int $pluginId,
-        int $buildId,
-        array $buildIncludes = [],
-        string $slug
-    ) {
+		int $pluginId,
+		int $buildId,
+		array $buildIncludes = [],
+		string $slug
+	) {
 		$this->pluginId = $pluginId;
 		$this->buildId = $buildId;
-        $this->buildIncludes = $buildIncludes;
-        $this->slug = $slug;
+		$this->buildIncludes = $buildIncludes;
+		$this->slug = $slug;
 	}
 
-    /**
-     * Create from array
-     *
-     * @return PluginMachinePlugin
-     */
-    public static function fromArray(array $data) {
-        $plugin = new static(
-            $data['pluginId'],
-            $data['buildId'],
-            Arr::get($data,'buildIncludes',[]),
-            Arr::get($data,'slug',''),
-        );
-        return $plugin;
-    }
+	/**
+	 * Create from array
+	 *
+	 * @return PluginMachinePlugin
+	 */
+	public static function fromArray(array $data)
+	{
+		$plugin = new static(
+			$data['pluginId'],
+			$data['buildId'],
+			Arr::get($data, 'buildIncludes', []),
+			Arr::get($data, 'slug', ''),
+		);
+		return $plugin;
+	}
 
-	public function buildId() {
+	public function buildId()
+	{
 		return $this->buildId;
 	}
 
-	public function id(){
+	public function id()
+	{
 		return $this->pluginId;
 	}
-
-
 }
