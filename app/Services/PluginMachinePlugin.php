@@ -16,7 +16,7 @@ class PluginMachinePlugin
 		int $pluginId,
 		int $buildId,
 		array $buildIncludes = [],
-		string $slug
+		string $slug = ''
 	) {
 		$this->pluginId = $pluginId;
 		$this->buildId = $buildId;
