@@ -23,7 +23,9 @@
 	],
     "scripts": {
         "lint": "phpcs app/ --standard=phpcs.xml",
-        "fix": "phpcbf app/ --standard=phpcs.xml"
+        "fix": "phpcbf app/ --standard=phpcs.xml",
+        "compat": "phpcs -p app/ bootstrap/ config/ --standard=PHPCompatibility  -n --runtime-set testVersion 7.3",
+        "compat:version": "phpcs -p app/ bootstrap/ config/ --standard=PHPCompatibility  -n --runtime-set testVersion"
     },
 	"require": {
 		"php": "^7.3|^8.0",
@@ -31,7 +33,9 @@
 		"illuminate/container": "^8.73",
 		"illuminate/http": "^8.0",
 		"illuminate/log": "^8.0",
-		"laravel-zero/framework": "^8.8"
+		"laravel-zero/framework": "^8.8",
+        "phpcompatibility/php-compatibility": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "*"
 	},
 	"require-dev": {
 		"mockery/mockery": "^1.4.3",

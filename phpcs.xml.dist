@@ -21,3 +21,4 @@
       </properties>
      </rule>
 </ruleset>
+<config name="installed_paths" value="vendor/phpcompatibility/php-compatibility" />

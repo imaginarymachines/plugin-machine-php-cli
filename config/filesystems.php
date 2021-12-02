@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'default' => 'local',
-    'disks' => [
-        'local' => [
-            'driver' => 'local',
-            'root' => getcwd(),
-        ],
-    ],
+	'default' => 'local',
+	'disks' => [
+		'local' => [
+			'driver' => 'local',
+			'root' => getcwd(),
+		],
+	],
 ];

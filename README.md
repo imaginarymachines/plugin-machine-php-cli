@@ -43,3 +43,7 @@ composer global remove imaginary-machines/plugin-machine-php-cli
 - Lint code
     - `composer lint`
     - `composer fix`
+- Check for minimum version PHP compatibility.
+    - `composer compat`
+- Check for other PHP version compatibility:
+    - `composer compat:version 8.0`
