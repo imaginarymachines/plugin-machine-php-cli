@@ -79,7 +79,7 @@ jobs:
     strategy:
       matrix:
         operating-system: ['ubuntu-latest']
-        php-versions: ['7.3', '7.4', '8.0']
+        php-versions: ['8.0']
     steps:
     - uses: actions/checkout@v2
 
@@ -103,13 +103,18 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Test PHP compat
-      run: composer compat
+    - name: 7.3 Compat
+      run: composer compat:version 7.3
 
+    - name: 7.4 Compat
+      run: composer compat:version 7.4
+
+    - name: 8.0 Compat
+      run: composer compat:version 8.0
   # Then test all OS/PHP version combos
   tests:
     runs-on: ${{ matrix.operating-system }}
-    needs: test
+    needs: php_compat
     strategy:
       matrix:
         operating-system: ['ubuntu-latest', 'windows-latest', 'macos-latest']
