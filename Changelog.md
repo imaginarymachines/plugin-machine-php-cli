@@ -2,8 +2,7 @@
 
 ## 0.2.2
 
-- Make pluginId arg option for `plugin:config` command.
-    - Will use pluginId from pluginMachine.json
+- Made compatible with PHP 7.3 and 7.4
 ## 0.2.1
 
 - Make pluginId arg option for `plugin:config` command.
