@@ -10,8 +10,17 @@ class PluginMachinePlugin
 	public $writeDir;
 	public $pluginId;
 	public $buildId;
-	public array $buildIncludes;
-	public string $slug;
+	/**
+	 * Paths included in built zip.
+	 * @var array
+	 */
+	public $buildIncludes;
+	/**
+	 * Plugin slug
+	 * @var string
+	 */
+	public $slug;
+
 	public function __construct(
 		int $pluginId,
 		int $buildId,
