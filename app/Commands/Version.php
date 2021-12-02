@@ -28,7 +28,7 @@ class Version extends Command
 	 */
 	public function handle()
 	{
-		$this->info(sprintf('Version is: %s', '0.2.2'));
+		$this->info(sprintf('Version is: %s', '0.2.3'));
 	}
 
 	/**
