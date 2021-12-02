@@ -34,3 +34,35 @@ test('Binding PluginMachine', function () {
 	expect($plugin->buildId)->toEqual('5');
 	expect($plugin->slug)->toBe('taco');
 });
+
+//This is an e2e test for add and get via api
+//It is skipped for now, because needs token set in CI.
+test( 'Api', function(){
+    $this->markTestSkipped('Needs token set in CI');
+    //Get API from container
+    $api = app()->make(PluginMachineApi::class);
+    //Get Plugin Machien from container
+    $pluginMachine =app(PluginMachine::class);
+    //Add feature via API
+    $r = $api->addFeature('block',$pluginMachine->plugin,[
+        "blockName" => "two",
+        "blockTitle" => "Two",
+        "blockCategory" => "design",
+        "blockRenderCallbackType" => "jsx",
+        "blockBLOCK_DESCRIPTION" => "Block Two",
+        "featureType" => "block"
+    ]);
+    //Check response
+    $this->assertArrayHasKey('id',$r);
+    $this->assertArrayHasKey('files',$r);
+    //Get all the files
+    foreach ($r['files'] as $file) {
+        $api->getFeatureCode(
+            $r['id'],
+            $pluginMachine->plugin,
+            $file
+        );
+    }
+    //Test if files written
+
+})->group( 'api:real');

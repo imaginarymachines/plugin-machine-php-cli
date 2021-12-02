@@ -73,8 +73,8 @@ class PluginMachineApi
 		///plugins
 		$r = $this->getClientWithToken()
 			->get($url);
-		if (200 == $r->status()) {
-			return $r->body();
+		if (201 === $r->status()|| 200 === $r->status()) {
+				return $r->body();
 		}
 		$this->throwBasedOnStatus($r->status());
 	}
@@ -93,7 +93,8 @@ class PluginMachineApi
 		///plugins
 		$r = $this->getClientWithToken()
 			->post($url, $data);
-		if (201 === $r->status()) {
+
+		if (201 === $r->status()|| 200 === $r->status()) {
 			return [
 				'files' => $r->json('files'),
 				'id' => $r->json('setting.id'),
