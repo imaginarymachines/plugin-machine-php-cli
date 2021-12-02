@@ -35,7 +35,8 @@
 		"illuminate/log": "^8.0",
 		"laravel-zero/framework": "^8.8",
         "phpcompatibility/php-compatibility": "^9.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "psr/container": "^1.1.0"
 	},
 	"require-dev": {
 		"mockery/mockery": "^1.4.3",
