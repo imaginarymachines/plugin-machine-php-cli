@@ -5,4 +5,4 @@
 .phpunit.result.cache
 .env
 home
-.composer.lock
+composer.lock
