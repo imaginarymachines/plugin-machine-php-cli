@@ -112,10 +112,9 @@ class Helpers
 	 */
 	public static function writePath($file = null)
 	{
-		$path =getcwd();
 		if (! $file) {
-			return $path;
+			return '/';
 		}
-		return $path . '/' . $file;
+		return '/' . $file;
 	}
 }
