@@ -10,7 +10,7 @@
 	],
 	"homepage": "https://github.com/imaginarymachines/plugin-machine-php-cli",
 	"type": "project",
-	"license": "GPL-2.0+",
+	"license": "GPL-2.0-or-later",
 	"support": {
 		"issues": "https://github.com/imaginarymachines/plugin-machine-php-cli/issues",
 		"source": "https://github.com/imaginarymachines/plugin-machine-php-cli"
