@@ -1,7 +1,8 @@
 # PHP CLI For Plugin Machine
 
 - [Documentation](https://pluginmachine.com/cli)
-[![Pest Tests](https://github.com/imaginarymachines/plugin-machine-php-cli/actions/workflows/pest.yml/badge.svg)](https://github.com/imaginarymachines/plugin-machine-php-cli/actions/workflows/pest.yml)
+
+[![PHP Tests](https://github.com/imaginarymachines/plugin-machine-php-cli/actions/workflows/php-test.yml/badge.svg)](https://github.com/imaginarymachines/plugin-machine-php-cli/actions/workflows/php-test.yml)
 ## Install
 ```bash
 composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
