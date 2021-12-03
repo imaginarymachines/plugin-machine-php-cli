@@ -6,3 +6,4 @@
 .env
 home
 composer.lock
+storage/test

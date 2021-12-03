@@ -42,7 +42,7 @@ test( 'Api', function(){
     //Get API from container
     $api = app()->make(PluginMachineApi::class);
     //Get Plugin Machien from container
-    $pluginMachine =app(PluginMachine::class);
+    $pluginMachine = app(PluginMachine::class);
     //Add feature via API
     $r = $api->addFeature('block',$pluginMachine->plugin,[
         "blockName" => "two",
@@ -55,6 +55,7 @@ test( 'Api', function(){
     //Check response
     $this->assertArrayHasKey('id',$r);
     $this->assertArrayHasKey('files',$r);
+    $this->assertArrayHasKey('main',$r);
     //Get all the files
     foreach ($r['files'] as $file) {
         $api->getFeatureCode(

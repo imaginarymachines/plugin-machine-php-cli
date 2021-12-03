@@ -97,6 +97,7 @@ class PluginMachineApi
 		if (201 === $r->status()|| 200 === $r->status()) {
 			return [
 				'files' => $r->json('files'),
+                'main' => $r->json('main'),
 				'id' => $r->json('setting.id'),
 			];
 		} else {

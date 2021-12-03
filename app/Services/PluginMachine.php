@@ -58,6 +58,7 @@ class PluginMachine
 		);
 
 		$files = $r['files'];
+        $main = $r['main'];
 		$id = $r['id'];
 
 
@@ -87,7 +88,7 @@ class PluginMachine
 		if (! empty($pluginMachineJson) && ! empty(json_decode($pluginMachineJson, true))) {
 			Helpers::pluginConfig(json_decode($pluginMachineJson, true));
 		}
-		return $files;
+		return (object)['files' => $files, 'main' => $main];
 	}
 
 	/**

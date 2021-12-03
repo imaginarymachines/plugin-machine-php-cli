@@ -1,5 +1,9 @@
 # Plugin Machine CLI Changelog
 
+# 0.4.1
+
+- Log what needs to get added to main plugin file:
+
 ## 0.4.0
 - Write to the right path.
 ## 0.3.0

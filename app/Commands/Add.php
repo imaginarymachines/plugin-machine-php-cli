@@ -72,9 +72,15 @@ class Add extends Command
 		try {
 			//Ask machine to add feature, get back array of files added
 			$r = $pluginMachine->addFeature($feature->type, $data);
-			foreach ($r as $file) {
+			foreach ($r->files as $file) {
 				$this->info('Added file: ' . $file);
 			}
+            if( ! empty($r->main)){
+                foreach ($r->main as $mainLine) {
+                    $this->warn('You must add to main plugin file');
+                    $this->info($mainLine);
+                }
+            }
 		} catch (\Throwable $th) {
 			$this->error($th->getMessage());
 		}
