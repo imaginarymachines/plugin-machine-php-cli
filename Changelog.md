@@ -1,4 +1,7 @@
 # Plugin Machine CLI Changelog
+
+## 0.4.0
+- Write to the right path.
 ## 0.3.0
 - Add self help command
 ## 0.2.3

@@ -112,9 +112,11 @@ class Helpers
 	 */
 	public static function writePath($file = null)
 	{
+
+		$path = env('PLUGIN_MACHINE_WRITE_PATH', '/');
 		if (! $file) {
-			return '/';
+			return $path;
 		}
-		return '/' . $file;
+		return $path . $file;
 	}
 }

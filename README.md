@@ -27,6 +27,11 @@ composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
 - Add a feature to current plugin
     - `php plugin-machine add`
 
+### Envioronment Variables
+
+- `PLUGIN_MACHINE_TOKEN` - Authentication token. Overrides values set with login command.
+- `PLUGIN_MACHINE_WRITE_PATH` - The path to write output to.
+
 ### Uninstall
 
 ```bash

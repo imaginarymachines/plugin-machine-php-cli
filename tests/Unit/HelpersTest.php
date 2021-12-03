@@ -15,8 +15,8 @@ test('Helpers sets pluginConfig', function () {
 
 test('write path', function () {
 	$path = Helpers::writePath();
-	expect(getcwd())->toEqual($path);
-	expect(getcwd().'/'. 'r.php')->toEqual(
+	expect('/')->toEqual($path);
+	expect('/'. 'r.php')->toEqual(
 		Helpers::writePath(
 			'r.php',
 		)
