@@ -1,5 +1,6 @@
 # Plugin Machine CLI Changelog
-
+## 0.3.0
+- Add self help command
 ## 0.2.3
 - Made API url https
 - Fixed bug in API client, was checking wrong status code.
