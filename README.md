@@ -3,6 +3,8 @@
 - [Documentation](https://pluginmachine.com/cli)
 
 [![PHP Tests](https://github.com/imaginarymachines/plugin-machine-php-cli/actions/workflows/php-test.yml/badge.svg)](https://github.com/imaginarymachines/plugin-machine-php-cli/actions/workflows/php-test.yml)
+[![Latest Stable Version](http://poser.pugx.org/imaginary-machines/plugin-machine-php-cli/v)](https://packagist.org/packages/imaginary-machines/plugin-machine-php-cli) [![Total Downloads](http://poser.pugx.org/imaginary-machines/plugin-machine-php-cli/downloads)](https://packagist.org/packages/imaginary-machines/plugin-machine-php-cli) [![Latest Unstable Version](http://poser.pugx.org/imaginary-machines/plugin-machine-php-cli/v/unstable)](https://packagist.org/packages/imaginary-machines/plugin-machine-php-cli) [![License](http://poser.pugx.org/imaginary-machines/plugin-machine-php-cli/license)](https://packagist.org/packages/imaginary-machines/plugin-machine-php-cli) [![PHP Version Require](http://poser.pugx.org/imaginary-machines/plugin-machine-php-cli/require/php)](https://packagist.org/packages/imaginary-machines/plugin-machine-php-cli)
+
 ## Install
 ```bash
 composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
