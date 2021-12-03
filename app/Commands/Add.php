@@ -2,6 +2,7 @@
 
 namespace App\Commands;
 
+use App\BuildException;
 use App\Services\Features;
 use App\Services\PluginMachine;
 use App\Services\PluginMachineApi;
@@ -75,12 +76,23 @@ class Add extends Command
 			foreach ($r->files as $file) {
 				$this->info('Added file: ' . $file);
 			}
-            if( ! empty($r->main)){
-                foreach ($r->main as $mainLine) {
-                    $this->warn('You must add to main plugin file');
-                    $this->info($mainLine);
-                }
-            }
+			if (! empty($r->main)) {
+				foreach ($r->main as $mainLine) {
+					$this->warn('You must add to main plugin file');
+					$this->info($mainLine);
+				}
+			}
+		} catch (BuildException $e) {
+			$this->error($e->getMessage());
+			foreach ($e->errors as $error) {
+				if (is_array($error)) {
+					foreach ($error as $errorLine) {
+						$this->error($errorLine);
+					}
+				} else {
+					$this->error($error);
+				}
+			}
 		} catch (\Throwable $th) {
 			$this->error($th->getMessage());
 		}

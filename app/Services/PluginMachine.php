@@ -58,7 +58,7 @@ class PluginMachine
 		);
 
 		$files = $r['files'];
-        $main = $r['main'];
+		$main = $r['main'];
 		$id = $r['id'];
 
 

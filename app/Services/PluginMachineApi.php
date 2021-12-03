@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\BuildException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Arr;
+use Illuminate\Http\Client\Response;
 
 /**
  * API client for Plugin Machine
@@ -76,7 +78,7 @@ class PluginMachineApi
 		if (201 === $r->status()|| 200 === $r->status()) {
 				return $r->body();
 		}
-		$this->throwBasedOnStatus($r->status());
+		$this->throwBasedOnStatus($r);
 	}
 
 	 /**
@@ -84,7 +86,7 @@ class PluginMachineApi
 	 *
 	 * @param string $featureType
 	 * @param PluginMachinePlugin $plugin
-	 * @param array $data
+	 * @param array| $data
 	 */
 	public function addFeature(string $featureType, PluginMachinePlugin $plugin, array $data)
 	{
@@ -97,11 +99,16 @@ class PluginMachineApi
 		if (201 === $r->status()|| 200 === $r->status()) {
 			return [
 				'files' => $r->json('files'),
-                'main' => $r->json('main'),
+				'main' => $r->json('main'),
 				'id' => $r->json('setting.id'),
 			];
 		} else {
-			$this->throwBasedOnStatus($r->status());
+			if (is_array($r->json())) {
+				$e = new BuildException('Invalid params', 400);
+				$e->errors = $r->json();
+				throw $e;
+			}
+			$this->throwBasedOnStatus($r);
 		}
 	}
 
@@ -116,7 +123,7 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r->status());
+			$this->throwBasedOnStatus($r);
 		}
 		return $r->body();
 	}
@@ -130,7 +137,7 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r->status());
+			$this->throwBasedOnStatus($r);
 		}
 		return $r->json();
 	}
@@ -144,20 +151,28 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r->status());
+			$this->throwBasedOnStatus($r);
 		}
 		return $r->json();
 	}
 
-	protected function throwBasedOnStatus($status)
+	protected function throwBasedOnStatus(Response $response)
 	{
+		$status = $response->status();
 		if (403 == $status) {
 			throw new \Exception('Not authorized to access plugin');
 		}
 		if (404 == $status) {
 			throw new \Exception('Plugin not found');
 		}
-		throw new \Exception($status);
+		$body = ! empty($response->json()) ? $response->json() : json_decode($response->body(), true);
+		if (is_array($body)) {
+			if (isset($body['message'])) {
+				throw new \Exception($body['message']);
+			} else {
+				throw new \Exception($response->body());
+			}
+		}
 	}
 
 

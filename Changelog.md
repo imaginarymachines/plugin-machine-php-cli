@@ -2,8 +2,8 @@
 
 # 0.4.1
 
-- Log what needs to get added to main plugin file:
-
+- Log what needs to get added to main plugin file.
+- More descriptive errors in CLI output when code API returns error
 ## 0.4.0
 - Write to the right path.
 ## 0.3.0
