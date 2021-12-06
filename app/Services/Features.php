@@ -12,20 +12,34 @@ class Features
 	protected $featuresData;
 	protected $rulesData;
 
-	const PATH_FEATURES = '/data/features.json';
-	const PATH_RULES = '/data/rules.json';
-	public function __construct()
+	const PATH_FEATURES = 'data/features.json';
+	const PATH_RULES = 'data/rules.json';
+	public function __construct(array $rulesData, array $featuresData)
 	{
-		$this->rulesData = (array) json_decode(
-			file_get_contents(__DIR__ .self::PATH_RULES)
-		);
-		$this->featuresData = (array) json_decode(
-			file_get_contents(__DIR__ .self::PATH_FEATURES)
-		);
+		$this->rulesData = $rulesData;
+        $this->featuresData = $featuresData;
 		$this->features = collect($this->featuresData)->map(function ($feature) {
 			return $feature->feature;
 		})->toArray();
 	}
+
+    /**
+     * Check if rules data is written.
+     *
+     *  @return bool
+     */
+    public function rulesDataExists() {
+        return file_exists(__DIR__ .self::PATH_RULES);
+    }
+
+    /**
+     * Check if features data is written.
+     *
+     *  @return bool
+     */
+    public function featuresDataExists() {
+        return file_exists(__DIR__ .self::PATH_FEATURES);
+    }
 
 	public function getRules(string $feature)
 	{

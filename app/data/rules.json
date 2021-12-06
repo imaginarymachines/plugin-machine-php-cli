@@ -13,7 +13,7 @@
             "rules": [
                 "string"
             ],
-            "label": "Label: Singluar Name",
+            "label": "Label: Singular Name",
             "options": null
         },
         "cptNAME_MENU": {
