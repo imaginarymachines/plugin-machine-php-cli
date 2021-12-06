@@ -3,8 +3,8 @@ namespace App;
 
 class BuildException extends \Exception
 {
-    /**
-     * @var array
-     */
+	/**
+	 * @var array
+	 */
 	public $errors;
 }

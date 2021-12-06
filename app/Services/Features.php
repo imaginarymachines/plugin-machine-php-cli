@@ -17,10 +17,10 @@ class Features
 	public function __construct()
 	{
 		$this->rulesData = (array) json_decode(
-			Storage::get(self::PATH_RULES)
+			file_get_contents(__DIR__ .self::PATH_RULES)
 		);
 		$this->featuresData = (array) json_decode(
-			Storage::get(self::PATH_FEATURES)
+			file_get_contents(__DIR__ .self::PATH_FEATURES)
 		);
 		$this->features = collect($this->featuresData)->map(function ($feature) {
 			return $feature->feature;

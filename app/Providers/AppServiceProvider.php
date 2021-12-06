@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
 			$plugin = isset($parameters['plugin'])
 				? $parameters['plugin']
 				: PluginMachinePlugin::fromArray(Helpers::pluginConfig());
-			//create YourService passing a parameter got from the calling code
 			return new PluginMachine(
 				$app->make(PluginMachineApi::class),
 				$plugin,
