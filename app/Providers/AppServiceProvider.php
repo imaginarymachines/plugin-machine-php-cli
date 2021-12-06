@@ -36,6 +36,13 @@ class AppServiceProvider extends ServiceProvider
 				Helpers::writePath()
 			);
 		});
+
+        //Configure logging channel
+        //https://laravel-zero.com/docs/logging#note-on-phar-build
+        config(['logging.channels.single.path' => \Phar::running()
+            ? dirname(\Phar::running(false)) . '/plugin-machine.log'
+            : storage_path('logs/plugin-machine.log')
+        ]);
 	}
 
 	/**
