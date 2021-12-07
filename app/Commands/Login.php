@@ -30,6 +30,7 @@ class Login extends Command
         //Sync rules locally if needed.
         if( ! $features->rulesDataExists() || ! $features->featuresDataExists()){
             Artisan::call(SyncRules::class);
+            echo Artisan::output();
         }
 	}
 
