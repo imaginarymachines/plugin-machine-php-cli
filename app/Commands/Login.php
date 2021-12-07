@@ -6,6 +6,9 @@ use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 use App\Helpers;
 use App\Config;
+use App\Services\Features;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 class Login extends Command
 {
@@ -20,10 +23,15 @@ class Login extends Command
 	 *
 	 * @return mixed
 	 */
-	public function handle()
+	public function handle(Features $features)
 	{
 		Helpers::token($this->argument('token'));
 		$this->info('Token set');
+		//Sync rules locally if needed.
+		if (! $features->rulesDataExists() || ! $features->featuresDataExists()) {
+			Artisan::call(SyncRules::class);
+			echo Artisan::output();
+		}
 	}
 
 	/**

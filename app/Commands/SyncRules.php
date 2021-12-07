@@ -18,16 +18,16 @@ class SyncRules extends Command
 
 	public function handle(PluginMachineApi $api)
 	{
-
 		$json = $this->encodeJsonPretty(
 			$api->getRules()
 		);
-		Storage::disk('local')->put(Features::PATH_RULES, $json);
+		file_put_contents(app_path('data/rules.json'), $json);
 
 		$json = $this->encodeJsonPretty(
 			$api->getFeatures()
 		);
-		Storage::disk('local')->put(Features::PATH_FEATURES, $json);
+		file_put_contents(app_path('data/features.json'), $json);
+		$this->info('Sync complete');
 	}
 
 	protected function encodeJsonPretty(array$data):string

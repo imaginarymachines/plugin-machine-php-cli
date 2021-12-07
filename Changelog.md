@@ -1,6 +1,11 @@
 # Plugin Machine CLI Changelog
 
-# 0.4.1
+## 0.5.0
+
+- Load rules based on local path
+- Sync rules after login
+- Configured log file correctly
+## 0.4.1
 
 - Log what needs to get added to main plugin file.
 - More descriptive errors in CLI output when code API returns error
