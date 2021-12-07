@@ -18,23 +18,23 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-        //Check if we have rules
-        $hasRules = file_exists(app_path(Features::PATH_RULES));
-        //sync command should work without Features service.
-        if( $hasRules ) {
-            $this->app->bind(Features::class, function () {
-                return new Features(
-                    (array) json_decode(
-                        file_get_contents(app_path(Features::PATH_RULES))
-                    ),
-                    (array) json_decode(
-                        file_get_contents(app_path(Features::PATH_FEATURES))
-                    ),
-                );
-            });
-        }
+		//Check if we have rules
+		$hasRules = file_exists(app_path(Features::PATH_RULES));
+		//sync command should work without Features service.
+		if ($hasRules) {
+			$this->app->bind(Features::class, function () {
+				return new Features(
+					(array) json_decode(
+						file_get_contents(app_path(Features::PATH_RULES))
+					),
+					(array) json_decode(
+						file_get_contents(app_path(Features::PATH_FEATURES))
+					),
+				);
+			});
+		}
 
-        //Put plugin machine API in container
+		//Put plugin machine API in container
 		$this->app->bind(PluginMachineApi::class, function () {
 			return new PluginMachineApi(
 				Helpers::apiUrl(),
@@ -55,12 +55,12 @@ class AppServiceProvider extends ServiceProvider
 			);
 		});
 
-        //Configure logging channel
-        //https://laravel-zero.com/docs/logging#note-on-phar-build
-        config(['logging.channels.single.path' => \Phar::running()
-            ? dirname(\Phar::running(false)) . '/plugin-machine.log'
-            : storage_path('logs/plugin-machine.log')
-        ]);
+		//Configure logging channel
+		//https://laravel-zero.com/docs/logging#note-on-phar-build
+		config(['logging.channels.single.path' => \Phar::running()
+			? dirname(\Phar::running(false)) . '/plugin-machine.log'
+			: storage_path('logs/plugin-machine.log')
+		]);
 	}
 
 	/**

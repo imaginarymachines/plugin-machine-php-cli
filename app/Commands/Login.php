@@ -27,11 +27,11 @@ class Login extends Command
 	{
 		Helpers::token($this->argument('token'));
 		$this->info('Token set');
-        //Sync rules locally if needed.
-        if( ! $features->rulesDataExists() || ! $features->featuresDataExists()){
-            Artisan::call(SyncRules::class);
-            echo Artisan::output();
-        }
+		//Sync rules locally if needed.
+		if (! $features->rulesDataExists() || ! $features->featuresDataExists()) {
+			Artisan::call(SyncRules::class);
+			echo Artisan::output();
+		}
 	}
 
 	/**

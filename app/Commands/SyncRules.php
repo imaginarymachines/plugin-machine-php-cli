@@ -21,13 +21,13 @@ class SyncRules extends Command
 		$json = $this->encodeJsonPretty(
 			$api->getRules()
 		);
-        file_put_contents(app_path('data/rules.json'),$json);
+		file_put_contents(app_path('data/rules.json'), $json);
 
 		$json = $this->encodeJsonPretty(
 			$api->getFeatures()
 		);
-        file_put_contents(app_path('data/features.json'),$json);
-        $this->info('Sync complete');
+		file_put_contents(app_path('data/features.json'), $json);
+		$this->info('Sync complete');
 	}
 
 	protected function encodeJsonPretty(array$data):string

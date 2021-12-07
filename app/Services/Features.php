@@ -17,29 +17,31 @@ class Features
 	public function __construct(array $rulesData, array $featuresData)
 	{
 		$this->rulesData = $rulesData;
-        $this->featuresData = $featuresData;
+		$this->featuresData = $featuresData;
 		$this->features = collect($this->featuresData)->map(function ($feature) {
 			return $feature->feature;
 		})->toArray();
 	}
 
-    /**
-     * Check if rules data is written.
-     *
-     *  @return bool
-     */
-    public function rulesDataExists() {
-        return file_exists(__DIR__ .self::PATH_RULES);
-    }
+	/**
+	 * Check if rules data is written.
+	 *
+	 *  @return bool
+	 */
+	public function rulesDataExists()
+	{
+		return file_exists(__DIR__ .self::PATH_RULES);
+	}
 
-    /**
-     * Check if features data is written.
-     *
-     *  @return bool
-     */
-    public function featuresDataExists() {
-        return file_exists(__DIR__ .self::PATH_FEATURES);
-    }
+	/**
+	 * Check if features data is written.
+	 *
+	 *  @return bool
+	 */
+	public function featuresDataExists()
+	{
+		return file_exists(__DIR__ .self::PATH_FEATURES);
+	}
 
 	public function getRules(string $feature)
 	{
