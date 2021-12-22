@@ -16,7 +16,7 @@ class SyncRules extends Command
 	protected $description = 'Update feature and rule JSON files';
 
 
-	public function handle(PluginMachineApi $api,Features $features)
+	public function handle(PluginMachineApi $api, Features $features)
 	{
 		$json = $this->encodeJsonPretty(
 			$api->getRules()

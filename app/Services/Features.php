@@ -16,19 +16,18 @@ class Features
 	const PATH_RULES = 'data/rules.json';
 	public function __construct()
 	{
-        if( $this->rulesDataExists() && $this->featuresDataExists() ){
-            $this->rulesData = json_decode(
-                file_get_contents($this->getRulesDataPath()),
-                true
-            );
-            $this->featuresData = json_decode(
-                file_get_contents($this->getFeaturesDataPath()),
-                true
-            );
-            $this->features = collect($this->featuresData)
-                ->map(fn($f)=> is_object($f)? $f->feature : $f['feature'])->toArray();
-        }
-
+		if ($this->rulesDataExists() && $this->featuresDataExists()) {
+			$this->rulesData = json_decode(
+				file_get_contents($this->getRulesDataPath()),
+				true
+			);
+			$this->featuresData = json_decode(
+				file_get_contents($this->getFeaturesDataPath()),
+				true
+			);
+			$this->features = collect($this->featuresData)
+				->map(fn($f)=> is_object($f)? $f->feature : $f['feature'])->toArray();
+		}
 	}
 
 	/**
@@ -41,13 +40,14 @@ class Features
 		return file_exists($this->getRulesDataPath());
 	}
 
-    /**
-     * Get path to rules data.
-     * @return string
-     */
-    public function getRulesDataPath(){
-        return __DIR__ .'/'.self::PATH_RULES;
-    }
+	/**
+	 * Get path to rules data.
+	 * @return string
+	 */
+	public function getRulesDataPath()
+	{
+		return __DIR__ .'/'.self::PATH_RULES;
+	}
 
 	/**
 	 * Check if features data is written.
@@ -59,13 +59,14 @@ class Features
 		return file_exists($this->getFeaturesDataPath());
 	}
 
-    /**
-     * Get the path to the features data file.
-     * @return string
-     */
-    public function getFeaturesDataPath(){
-        return __DIR__ .'/'.self::PATH_FEATURES;
-    }
+	/**
+	 * Get the path to the features data file.
+	 * @return string
+	 */
+	public function getFeaturesDataPath()
+	{
+		return __DIR__ .'/'.self::PATH_FEATURES;
+	}
 
 	public function getRules(string $feature)
 	{

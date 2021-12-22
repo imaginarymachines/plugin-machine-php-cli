@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->app->bind(Features::class, function () {
-            return new Features(
-                //Not needed now.
-            );
-        });
+			return new Features(
+				//Not needed now.
+			);
+		});
 
 		//Put plugin machine API in container
 		$this->app->bind(PluginMachineApi::class, function () {

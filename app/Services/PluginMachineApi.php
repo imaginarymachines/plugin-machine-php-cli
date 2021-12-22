@@ -79,7 +79,7 @@ class PluginMachineApi
 		if (201 === $r->status()|| 200 === $r->status()) {
 				return $r->body();
 		}
-		$this->throwBasedOnStatus($r,$url);
+		$this->throwBasedOnStatus($r, $url);
 	}
 
 	 /**
@@ -109,7 +109,7 @@ class PluginMachineApi
 				$e->errors = $r->json();
 				throw $e;
 			}
-			$this->throwBasedOnStatus($r,$url);
+			$this->throwBasedOnStatus($r, $url);
 		}
 	}
 
@@ -124,7 +124,7 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r,$url);
+			$this->throwBasedOnStatus($r, $url);
 		}
 		return $r->body();
 	}
@@ -138,7 +138,7 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r,$url);
+			$this->throwBasedOnStatus($r, $url);
 		}
 		return $r->json();
 	}
@@ -152,16 +152,16 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r,$url);
+			$this->throwBasedOnStatus($r, $url);
 		}
 		return $r->json();
 	}
 
-	protected function throwBasedOnStatus(Response $response,string $url)
+	protected function throwBasedOnStatus(Response $response, string $url)
 	{
-        $message = function($message)use ($url){
-            return sprintf('%s | Url: %s',$message,$url);
-        };
+		$message = function ($message) use ($url) {
+			return sprintf('%s | Url: %s', $message, $url);
+		};
 		$status = $response->status();
 		if (403 == $status) {
 			throw new \Exception($message('Not authorized to access plugin.'));
