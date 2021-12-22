@@ -26,7 +26,10 @@ class Features
 				true
 			);
 			$this->features = collect($this->featuresData)
-				->map(fn($f)=> is_object($f)? $f->feature : $f['feature'])->toArray();
+				->map(function ($f) {
+					return is_object($f)? $f->feature : $f['feature'];
+				})
+				->toArray();
 		}
 	}
 
