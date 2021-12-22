@@ -1,1 +1,1 @@
-{"pluginId":"5","buildId":"1","buildIncludes":[],"slug":"slugo"}
+{"slug":"norm","pluginId":27,"buildId":32,"entryPoints":{"adminPages":["arms"],"blocks":[]},"buildIncludes":["norm.php","readme.txt","php","vendor","build","admin\/arms\/init.php"]}

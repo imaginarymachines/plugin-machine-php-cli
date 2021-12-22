@@ -16,17 +16,17 @@ class SyncRules extends Command
 	protected $description = 'Update feature and rule JSON files';
 
 
-	public function handle(PluginMachineApi $api)
+	public function handle(PluginMachineApi $api,Features $features)
 	{
 		$json = $this->encodeJsonPretty(
 			$api->getRules()
 		);
-		file_put_contents(app_path('data/rules.json'), $json);
+		file_put_contents($features->getRulesDataPath(), $json);
 
 		$json = $this->encodeJsonPretty(
 			$api->getFeatures()
 		);
-		file_put_contents(app_path('data/features.json'), $json);
+		file_put_contents($features->getFeaturesDataPath(), $json);
 		$this->info('Sync complete');
 	}
 

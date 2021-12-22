@@ -18,21 +18,11 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		//Check if we have rules
-		$hasRules = file_exists(app_path(Features::PATH_RULES));
-		//sync command should work without Features service.
-		if ($hasRules) {
-			$this->app->bind(Features::class, function () {
-				return new Features(
-					(array) json_decode(
-						file_get_contents(app_path(Features::PATH_RULES))
-					),
-					(array) json_decode(
-						file_get_contents(app_path(Features::PATH_FEATURES))
-					),
-				);
-			});
-		}
+		$this->app->bind(Features::class, function () {
+            return new Features(
+                //Not needed now.
+            );
+        });
 
 		//Put plugin machine API in container
 		$this->app->bind(PluginMachineApi::class, function () {

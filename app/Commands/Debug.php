@@ -24,7 +24,7 @@ class Debug extends Command
     {
         $this->info('App path: ' . app_path());
         $this->info('Write path: ' . Helpers::writePath());
-        $this->info('Rules path: ' . app_path(Features::PATH_RULES));
+        $this->info('Rules path: ' . $features->getRulesDataPath());
         $this->info('Rules exist: ' . $features->rulesDataExists());
         $this->info('Features path: ' . $features->featuresDataExists());
         $this->info('Features exist: ' . $features->featuresDataExists());

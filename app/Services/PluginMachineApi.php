@@ -79,7 +79,7 @@ class PluginMachineApi
 		if (201 === $r->status()|| 200 === $r->status()) {
 				return $r->body();
 		}
-		$this->throwBasedOnStatus($r);
+		$this->throwBasedOnStatus($r,$url);
 	}
 
 	 /**
@@ -109,7 +109,7 @@ class PluginMachineApi
 				$e->errors = $r->json();
 				throw $e;
 			}
-			$this->throwBasedOnStatus($r);
+			$this->throwBasedOnStatus($r,$url);
 		}
 	}
 
@@ -124,7 +124,7 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r);
+			$this->throwBasedOnStatus($r,$url);
 		}
 		return $r->body();
 	}
@@ -138,7 +138,7 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r);
+			$this->throwBasedOnStatus($r,$url);
 		}
 		return $r->json();
 	}
@@ -152,26 +152,29 @@ class PluginMachineApi
 		$r = $this->getClientWithToken()
 			->get($url);
 		if (200 != $r->status()) {
-			$this->throwBasedOnStatus($r);
+			$this->throwBasedOnStatus($r,$url);
 		}
 		return $r->json();
 	}
 
-	protected function throwBasedOnStatus(Response $response)
+	protected function throwBasedOnStatus(Response $response,string $url)
 	{
+        $message = function($message)use ($url){
+            return sprintf('%s | Url: %s',$message,$url);
+        };
 		$status = $response->status();
 		if (403 == $status) {
-			throw new \Exception('Not authorized to access plugin');
+			throw new \Exception($message('Not authorized to access plugin.'));
 		}
 		if (404 == $status) {
-			throw new \Exception('Plugin not found');
+			throw new \Exception($message('Plugin not found.'));
 		}
 		$body = ! empty($response->json()) ? $response->json() : json_decode($response->body(), true);
 		if (is_array($body)) {
 			if (isset($body['message'])) {
-				throw new \Exception($body['message']);
+				throw new \Exception($message($body['message']));
 			} else {
-				throw new \Exception($response->body());
+				throw new \Exception($message('Error'));
 			}
 		}
 	}

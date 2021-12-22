@@ -2,7 +2,7 @@
 use App\Services\PluginMachineApi;
 use App\Services\PluginMachine;
 use App\Services\PluginMachinePlugin;
-
+use Illuminate\Support\Facades\Storage;
 use App\Helpers;
 
 //Is API available?
@@ -38,13 +38,19 @@ test('Binding PluginMachine', function () {
 //This is an e2e test for add and get via api
 //It is skipped for now, because needs token set in CI.
 test( 'Api', function(){
+    $delete = function( ){
+        collect(Storage::allFiles( Helpers::writePath()))
+        ->map(fn($file) => Storage::delete($file));
+    };
+    //dd(Helpers::pluginConfig());
     $this->markTestSkipped('Needs token set in CI');
+    $delete();
     //Get API from container
     $api = app()->make(PluginMachineApi::class);
     //Get Plugin Machien from container
     $pluginMachine = app(PluginMachine::class);
     //Add feature via API
-    $r = $api->addFeature('block',$pluginMachine->plugin,[
+    $r  =(array) $pluginMachine->addFeature('block',[
         "blockName" => "two",
         "blockTitle" => "Two",
         "blockCategory" => "design",
@@ -52,18 +58,15 @@ test( 'Api', function(){
         "blockBLOCK_DESCRIPTION" => "Block Two",
         "featureType" => "block"
     ]);
-    //Check response
-    $this->assertArrayHasKey('id',$r);
+
     $this->assertArrayHasKey('files',$r);
     $this->assertArrayHasKey('main',$r);
-    //Get all the files
-    foreach ($r['files'] as $file) {
-        $api->getFeatureCode(
-            $r['id'],
-            $pluginMachine->plugin,
-            $file
-        );
-    }
-    //Test if files written
+    $files = array_flip($r['files']);
+    $this->assertArrayHasKey('package.json',$files);
+    $this->assertArrayHasKey('blocks/two/index.js',$files);
+    $this->assertArrayHasKey('pluginMachine.json',$files);
+    $this->assertTrue(Storage::exists( Helpers::writePath('/package.json')));
+    $this->assertTrue(Storage::exists( Helpers::writePath('/blocks/two/index.js')));
+    $delete();
 
 })->group( 'api:real');
