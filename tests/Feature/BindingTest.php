@@ -40,7 +40,9 @@ test('Binding PluginMachine', function () {
 test( 'Api', function(){
     $delete = function( ){
         collect(Storage::allFiles( Helpers::writePath()))
-        ->map(fn($file) => Storage::delete($file));
+        ->map(function($file) {
+            Storage::delete($file);
+        });
     };
     //dd(Helpers::pluginConfig());
     $this->markTestSkipped('Needs token set in CI');
