@@ -17,18 +17,21 @@ composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
 
 ## Usage
 
-- Check version
-	- `plugin-machine version`
-- Test that it can write a file
-	- `plugin-machine file:put`
 - Login to plugin machine.
 	- `plugin-machine login {token}`
     - [When logged in, go to /dashboard/user](https://pluginmachine.app/dashboard/user) to see API token.
 - Write pluginMachine.json for a plugin
     - `php plugin-machine plugin:config {pluginId}`
+    - Requires login
 - Add a feature to current plugin
     - `php plugin-machine add`
-
+    - Requires login
+- Check version
+	- `plugin-machine version`
+- Test that it can write a file
+	- `plugin-machine file:put`
+- Output some debug information
+	- `plugin-machine debug`
 ### Envioronment Variables
 
 - `PLUGIN_MACHINE_TOKEN` - Authentication token. Overrides values set with login command.

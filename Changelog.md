@@ -5,6 +5,7 @@
 - Load rules based on local path
 - Sync rules after login
 - Configured log file correctly
+- Added a debug command
 ## 0.4.1
 
 - Log what needs to get added to main plugin file.
