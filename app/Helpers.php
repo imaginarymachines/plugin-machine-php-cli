@@ -114,9 +114,9 @@ class Helpers
 	{
 
 		$path = env('PLUGIN_MACHINE_WRITE_PATH', '/');
-		if (! $file) {
-			return $path;
+		if ($file) {
+			return $path . $file;
 		}
-		return $path . $file;
+		return $path;
 	}
 }

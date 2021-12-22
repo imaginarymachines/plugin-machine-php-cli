@@ -14,11 +14,13 @@ test('Helpers sets pluginConfig', function () {
 });
 
 test('write path', function () {
-	$path = Helpers::writePath();
-	expect('/')->toEqual($path);
-	expect('/'. 'r.php')->toEqual(
-		Helpers::writePath(
-			'r.php',
-		)
+    $path = env('PLUGIN_MACHINE_WRITE_PATH') ??'/';
+	expect($path)
+        ->toEqual(Helpers::writePath());
+	expect( $path .'r.php')
+        ->toEqual(
+            Helpers::writePath(
+                'r.php',
+            )
 	);
 });
