@@ -26,6 +26,8 @@ composer global require imaginary-machines/plugin-machine-php-cli:dev-main -W
 - Add a feature to current plugin
     - `php plugin-machine add`
     - Requires login
+- ZIP plugin for release
+    - `php plugin-machine plugin:zip`
 - Check version
 	- `plugin-machine version`
 - Test that it can write a file

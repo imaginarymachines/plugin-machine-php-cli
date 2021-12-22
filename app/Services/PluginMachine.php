@@ -115,4 +115,13 @@ class PluginMachine
 	{
 		return $this->writePath . '/' . $path;
 	}
+
+	/**
+	 * Get PluginMachinePlugin
+	 * @return PluginMachinePlugin
+	 */
+	public function getPlugin()
+	{
+		return $this->plugin;
+	}
 }

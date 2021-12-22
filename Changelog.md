@@ -2,6 +2,7 @@
 
 ## 0.5.0
 
+- Command to zip plugin for release.
 - Load rules based on local path
 - Sync rules after login
 - Configured log file correctly

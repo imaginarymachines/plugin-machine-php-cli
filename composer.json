@@ -36,6 +36,7 @@
 		"illuminate/log": "^8.0",
 		"laravel-zero/framework": "^8.8",
 		"laravel-zero/phar-updater": "^1.0.6",
+		"league/flysystem-ziparchive": "^1.0",
 		"phpcompatibility/php-compatibility": "^9.0",
 		"psr/container": "^1.1.0"
 	},

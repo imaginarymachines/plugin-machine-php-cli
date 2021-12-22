@@ -82,13 +82,16 @@ class Features
 			case 'flat.value':
 			case 'flat':
 				foreach ($this->getFeatures($withPluginHooks) as $key => $value) {
-					$options[] = $value->type;
+					$value = (array) $value;
+
+					$options[] = $value['type'];
 				}
 				break;
 			case 'flat.label':
 			case 'flat.label.singular':
 				foreach ($this->getFeatures($withPluginHooks) as $key => $value) {
-					$options[] = $value->singular;
+					$value = (array) $value;
+					$options[] = $value['singular'];
 				}
 				break;
 			default:
@@ -103,12 +106,13 @@ class Features
 
 		$c = collect($this->getFeatures($withPluginHooks))
 			->filter(function ($feature) use ($by, $search) {
-				return $feature->$by == $search;
+				$feature = (array)$feature;
+				return $feature[$by] == $search;
 			});
 		if ($c->count()) {
-			return $c->first();
+			return (object)$c->first();
 		}
-			throw new \Exception();
+		throw new \Exception();
 	}
 
 
@@ -116,7 +120,8 @@ class Features
 	{
 		if (! $withPluginHooks) {
 			return collect($this->features)->filter(function ($feature) {
-				return false == $feature->isPluginHook;
+				$feature = (array)$feature;
+				return false == $feature['isPluginHook'];
 			})->toArray();
 		}
 	}

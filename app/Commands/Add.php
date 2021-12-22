@@ -48,6 +48,7 @@ class Add extends Command
 		//Collect data by asking for each value
 		$data = [];
 		foreach ($rules as $key => $field) {
+			$field = (object)$field;
 			$label = isset($field->label)&& ! empty($field->label) ? $field->label : $key;
 
 			if (isset($field->options)) {
