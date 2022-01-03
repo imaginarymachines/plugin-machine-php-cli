@@ -21,7 +21,7 @@ class ZipPlugin extends Command
 		$zipPath = Helpers::writePath(
 			sprintf('%s.zip', $machine->plugin->slug)
 		);
-		$zipPath = app_path() . '/' . $machine->plugin->slug . '.zip';
+		$zipPath = app_path() . Helpers::writePath() . $machine->plugin->slug . '.zip';
 		$zip = new \ZipArchive();
 		$zip->open($zipPath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
