@@ -44,28 +44,25 @@ class ZipPlugin extends Command
                             ),
                             Storage::get($file)
                         );
+                        $this->info(sprintf('Added file at path "%s"', $path));
+
+                    }else{
+                        $this->info(sprintf('File %s does not exist', $file));
                     }
 
 				}
 				continue;
 			}
-			if (! Storage::exists($path)) {
-				$this->info(sprintf(
-					'Expected file at path "%s" does not exist. Skipping.',
-					$path
-				));
-				continue;
-			}
 
-			$zip->addFromString(
-				str_replace(Helpers::writePath(), '', $path),
-				Storage::get($path)
-			);
-			$this->info(sprintf('Added file at path "%s"', $path));
 		}
-        $x =         $zip->close();
-		$this->info(sprintf('Zip created at "%s"', $zipPath));
-		echo self::SUCCESS;
+        try {
+            $zip->close();
+            $this->info(sprintf('Zip created at "%s"', $zipPath));
+		    echo self::SUCCESS;
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+
 	}
 
 	/**
