@@ -49,6 +49,9 @@ composer global remove imaginary-machines/plugin-machine-php-cli
 
 - Build
 	-`php plugin-machine app:build plugin-machine`
+    - If this fails, check the error log in /storage/logs/
+    - [Make sure box bin has the right permissions](https://github.com/laravel-zero/laravel-zero/issues/230#issuecomment-1004337323)
+        - `sudo chmod 755 vendor/laravel-zero/framework/bin/box`
 - Test
 	-`php plugin-machine test`
 - Sync Rules
