@@ -1,0 +1,83 @@
+name: Build
+
+# Run when new release is available
+## @see https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#release
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest']
+        #Use lowest supported version.
+        php-versions: ['7.3']
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # For https://github.com/marketplace/actions/github-commit-push
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Fix permissions
+      run: chmod 755 vendor/laravel-zero/framework/bin/box
+
+      # Put release name  in variable
+      ## @see https://stackoverflow.com/a/58178121/1469799
+    - name: Set output
+      id: vars
+      run: echo ::set-output name=tag::${{ github.event.release.tag_name }}
+    - name: Check output
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: |
+        echo $RELEASE_VERSION
+        echo ${{ steps.vars.outputs.tag }}
+
+
+    - name: Build
+      run: php plugin-machine app:build plugin-machine
+
+    - name: Add Tag
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: git tag $RELEASE_VERSION
+
+    ## @see https://github.com/marketplace/actions/github-commit-push#inputs
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        author_email: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
+        message: "Build $RELEASE_VERSION"
+        tags: true
+
+  # Create tag
+  tag:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
