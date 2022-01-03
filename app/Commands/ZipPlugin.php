@@ -33,15 +33,19 @@ class ZipPlugin extends Command
 				if (empty($files)) {
 					continue;
 				}
+
 				foreach ($files as $file) {
-					$zip->addFromString(
-						str_replace(
-							substr(Helpers::writePath(), 1),
-							'',
-							$file
-						),
-						Storage::get($file)
-					);
+                    if( Storage::exists($file) ){
+                        $zip->addFromString(
+                            str_replace(
+                                substr(Helpers::writePath(), 1),
+                                '',
+                                $file
+                            ),
+                            Storage::get($file)
+                        );
+                    }
+
 				}
 				continue;
 			}
@@ -59,7 +63,7 @@ class ZipPlugin extends Command
 			);
 			$this->info(sprintf('Added file at path "%s"', $path));
 		}
-		$x =         $zip->close();
+        $x =         $zip->close();
 		$this->info(sprintf('Zip created at "%s"', $zipPath));
 		echo self::SUCCESS;
 	}
