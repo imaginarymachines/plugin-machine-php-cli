@@ -2,9 +2,10 @@ name: Build
 
 # Run when new release is available
 ## @see https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-on:
-  release:
-    types: [published]
+#on:
+#  release:
+#    types: [published]
+on: workflow_dispatch
 
 jobs:
   build:
@@ -36,7 +37,9 @@ jobs:
       ## @see https://stackoverflow.com/a/58178121/1469799
     - name: Set output
       id: vars
-      run: echo ::set-output name=tag::${{ github.event.release.tag_name }}
+      #run: echo ::set-output name=tag::${{ github.event.release.tag_name }}
+      run: echo ::set-output name=tag::0.5.1
+
     - name: Check output
       env:
         RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
