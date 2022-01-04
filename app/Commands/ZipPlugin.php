@@ -18,13 +18,21 @@ class ZipPlugin extends Command
 
 	public function handle(PluginMachine $machine)
 	{
-		$zipPath = Helpers::writePath(
-			sprintf('%s.zip', $machine->plugin->slug)
-		);
-		$zipPath = app_path() . Helpers::writePath() . $machine->plugin->slug . '.zip';
-		$zip = new \ZipArchive();
-		$zip->open($zipPath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
+        $dir = str_replace( 'storage/storage', 'storage',storage_path() . Helpers::writePath());
+        try {
+            chmod($dir, 755);
+        } catch (\Throwable $th) {
+            $this->error('Could not change permissions of directory ' . $dir );
+            return;
+        }
+
+        $zipPath = sprintf('%s%s.zip', $dir,$machine->plugin->slug);
+		$zip = new \ZipArchive();
+		if( ! $zip->open($zipPath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) ){
+            $this->error('Could not create zip file');
+            return;
+        }
 
 		foreach ($machine->plugin->buildIncludes as $path) {
 			$path = Helpers::writePath($path);

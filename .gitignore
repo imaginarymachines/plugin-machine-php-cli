@@ -8,3 +8,4 @@ home
 composer.lock
 storage/test
 storage/logs/plugin-machine.log
+storage/logs/plugin-machine.log
