@@ -4,7 +4,7 @@ name: Build
 ## @see https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#release
 on:
   release:
-    types: [created]
+    types: [created, edited]
 
 jobs:
   build:
