@@ -74,8 +74,8 @@ class ZipPlugin extends Command
                 ),
                 Storage::get($file)
             );
-            $this->info(sprintf('Added file at path "%s"', $path));
-        },function(){
+            $this->info(sprintf('Added file at path "%s"', $file));
+        },function()use($file){
             $this->error(sprintf('File %s could not be added to ZIP.', $file));
         });
 
