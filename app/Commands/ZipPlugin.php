@@ -18,8 +18,7 @@ class ZipPlugin extends Command
 
 	public function handle(PluginMachine $machine)
 	{
-
-        $dir = str_replace( 'storage/storage', 'storage',storage_path() . Helpers::writePath());
+        $dir = Storage::path('');
         try {
             chmod($dir, 755);
         } catch (\Throwable $th) {
