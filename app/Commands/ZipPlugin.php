@@ -43,23 +43,16 @@ class ZipPlugin extends Command
 
 				foreach ($files as $file) {
                     if( Storage::exists($file) ){
-                        $zip->addFromString(
-                            str_replace(
-                                substr(Helpers::writePath(), 1),
-                                '',
-                                $file
-                            ),
-                            Storage::get($file)
-                        );
-                        $this->info(sprintf('Added file at path "%s"', $path));
-
+                        $this->addFile($file,$zip);
                     }else{
                         $this->info(sprintf('File %s does not exist', $file));
                     }
 
 				}
 				continue;
-			}
+			}else {
+                $this->addFile($path,$zip);
+            }
 
 		}
         try {
@@ -71,6 +64,23 @@ class ZipPlugin extends Command
         }
 
 	}
+
+    protected function addFile(string $file, $zip){
+        rescue( function()use($zip,$file){
+            $zip->addFromString(
+                str_replace(
+                    substr(Helpers::writePath(), 1),
+                    '',
+                    $file
+                ),
+                Storage::get($file)
+            );
+            $this->info(sprintf('Added file at path "%s"', $path));
+        },function(){
+            $this->error(sprintf('File %s could not be added to ZIP.', $file));
+        });
+
+    }
 
 	/**
 	 * Define the command's schedule.
