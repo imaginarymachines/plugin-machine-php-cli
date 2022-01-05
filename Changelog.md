@@ -1,5 +1,7 @@
 # Plugin Machine CLI Changelog
 
+## 0.5.5
+- Directory permissions fixes for ZIP file creation
 ## 0.5.0
 
 - Command to zip plugin for release.

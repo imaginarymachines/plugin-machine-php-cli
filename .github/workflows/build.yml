@@ -37,8 +37,8 @@ jobs:
       ## @see https://stackoverflow.com/a/58178121/1469799
     - name: Set output
       id: vars
-      run: echo ::set-output name=tag::${{ github.event.release.tag_name }}
-      #run: echo ::set-output name=tag::0.5.2
+      #run: echo ::set-output name=tag::${{ github.event.release.tag_name }}
+      run: echo ::set-output name=tag::0.5.5
 
     - name: Check output
       env:
@@ -57,10 +57,8 @@ jobs:
     ## @see https://github.com/marketplace/actions/github-commit-push#inputs
     - name: Commit & Push changes
       uses: actions-js/push@master
-      env:
-        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         author_email: "${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
-        message: "Build $RELEASE_VERSION"
+        message: "Build ${{ steps.vars.outputs.tag }}"
         tags: true
