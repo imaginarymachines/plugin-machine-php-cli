@@ -47,7 +47,6 @@ class ZipPlugin extends Command
                     }else{
                         $this->info(sprintf('File %s does not exist', $file));
                     }
-
 				}
 				continue;
 			}else {

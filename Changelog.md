@@ -1,5 +1,7 @@
 # Plugin Machine CLI Changelog
 
+## 0.5.7
+- Fix path for ZIP file creation
 ## 0.5.6
 - Fixing build automation for releases, so it will have the right version number.
 ## 0.5.5

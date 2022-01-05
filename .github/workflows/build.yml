@@ -38,7 +38,7 @@ jobs:
     - name: Set output
       id: vars
       #run: echo ::set-output name=tag::${{ github.event.release.tag_name }}
-      run: echo ::set-output name=tag::0.5.6
+      run: echo ::set-output name=tag::0.5.7
 
     - name: Check output
       env:
